@@ -4,8 +4,6 @@ Responsive e-commerce template containing catalog, filters, product page, shoppi
 
 Demo: https://chekromul.github.io/uikit-ecommerce-template
 
-Also you can see `Sass` port of this theme: [vkovic/uikit-computer-store-template](https://github.com/vkovic/uikit-computer-store-template) 
-
 [![UIkit E-commerce Template](https://raw.githubusercontent.com/chekromul/uikit-ecommerce-template/gh-pages/images/preview.png "UIkit E-commerce Template")](https://raw.githubusercontent.com/chekromul/uikit-ecommerce-template/gh-pages/images/preview.png "UIkit E-commerce Template")
 
 ## Overview
@@ -15,7 +13,7 @@ Also you can see `Sass` port of this theme: [vkovic/uikit-computer-store-templat
 The project leverages:
 
 - [UIkit](https://getuikit.com)
-- [Pug](https://pugjs.org)
+- [Twig](https://www.npmjs.com/package/gulp-twig)
 - [Less](http://lesscss.org)
 - [Gulp](https://gulpjs.com)
 
@@ -43,7 +41,7 @@ uikit-ecommerce-store/
 |   |   ├── layouts/
 |   |   ├── mixins/
 |   |   ├── pages/
-|   |   |    ├── index.pug
+|   |   |    ├── index.twig
 |   |   ├── partials/
 |   ├── images/
 
@@ -55,7 +53,7 @@ To clone and run this project, you'll need [Git](https://git-scm.com) and [Node.
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/chekromul/uikit-ecommerce-template.git
+$ git clone https://github.com/konjakob/uikit-ecommerce-template.git
 
 # Go into the repository
 $ cd uikit-ecommerce-template
@@ -73,4 +71,4 @@ $ gulp
 
 ## License
 
-This software is licensed under the MIT License © [Roman Chekurov](https://github.com/chekromul)
+This software is licensed under the MIT License. The original theme with `Pug` support was developed by [Roman Chekurov](https://github.com/chekromul). The `Twig` adaption was done by [Jakob Wankel](https://github.com/konjakob).
