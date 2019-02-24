@@ -1,0 +1,46 @@
+{% extends '../layouts/_account.twig' %}
+	
+{% block vars %}
+  {% set page = {
+      title: 'Orders'
+    } %}
+  {% set profileActivePage = 1 %}
+{% endblock %}	
+
+{% block account %}
+
+	{% for order in orders %}
+
+		<section class="uk-card-body">
+			<h3><a class="uk-link-heading" href="#">#{{ order.id }}
+					<span class="uk-text-muted uk-text-small">{{ order.date }}</span></a></h3>
+			<table class="uk-table uk-table-small uk-table-justify uk-table-responsive uk-table-divider uk-margin-small-top uk-margin-remove-bottom">
+				<tbody>
+					<tr>
+						<th class="uk-width-medium">Items</th>
+						<td>{{ order.items }}</td>
+					</tr>
+					<tr>
+						<th class="uk-width-medium">Shipping</th>
+						<td>{{ order.shipping }}</td>
+					</tr>
+					<tr>
+						<th class="uk-width-medium">Payment</th>
+						<td>{{ order.payment }}</td>
+					</tr>
+					<tr>
+						<th class="uk-width-medium">Total</th>
+						<td>{{ order.total }}</td>
+					</tr>
+					<tr>
+						<th class="uk-width-medium">Status</th>
+						<td><span class="uk-label {% if order.status == "Canceled" %}uk-label-danger{% endif %}">{{ order.status }}</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+		
+
+	{% endfor %}
+			
+{% endblock %}

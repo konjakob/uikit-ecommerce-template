@@ -1,0 +1,35 @@
+{% extends '_default.twig' %}
+
+{% block vars %}
+{% endblock %}
+
+{% block default %}
+<section class="uk-section uk-section-small">
+	<div class="uk-container">
+		<div class="uk-grid-medium uk-child-width-1-1" uk-grid>
+			<div class="uk-text-center">
+			  {% if page.breadcrumbs %}
+				<ul class="uk-breadcrumb uk-flex-center uk-margin-remove">
+					<li><a href="index.html">Home</a></li>
+				  {% for breadcrumb, href in page.breadcrumbs %}	
+					<li><a href="{{ href }}">{{ breadcrumb }}</a></li>
+				  {% endfor %}					
+				  {% if page.title %}
+					<li><span>{{ page.title }}</span></li>
+				  {% endif %}
+				</ul>
+			  {% endif %}
+			  {% if page.title %}
+				<h1 class="uk-margin-small-top uk-margin-remove-bottom">{{ page.title }}</h1>
+			  {% endif %}
+			  {% if page.quantity %}
+				<div class="uk-text-meta uk-margin-xsmall-top">{{ page.quantity }} items</div>
+			  {% endif %}
+			</div>
+			<div>
+				{% block pages %}{% endblock %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% macro product(product) %}
+		  
+<article class="tm-product-card">
+	<div class="tm-product-card-media">
+		<div class="tm-ratio tm-ratio-4-3"><a class="tm-media-box" href="{{ product.href }}">
+				{# Labels #}
+				  {% if product.statuses %}
+					<div class="tm-product-card-labels">
+					  {% for status in product.statuses %}
+						  {% if status == "new" %}
+							<span class="uk-label uk-label-success">{{ status }}</span>
+						  {% elseif status == "top selling" %}
+							<span class="uk-label uk-label-warning">{{ status }}</span>
+						  {% elseif status == "trade-in" %}
+							<span class="uk-label uk-label-danger">{{ status }}</span>
+						  {% else %}
+							<span class="uk-label">{{ status }}</span>
+						  {% endif %}
+					  {% endfor %}
+					</div>
+				  {% endif %}
+				<figure class="tm-media-box-wrap">{% if product.image %}<img src="{{ product.image.medium }}" alt="{{product.name}}" />{% else %}icon("image", "3")(class="uk-text-muted"){% endif %}</figure>
+			</a></div>
+	</div>
+	<div class="tm-product-card-body">
+		<div class="tm-product-card-info">
+			<div class="uk-text-meta uk-margin-xsmall-bottom">{{ product.type }}</div>
+			<h3 class="tm-product-card-title"><a class="uk-link-heading" href="{{ product.href }}">{{ product.name }}</a></h3>
+			<ul class="uk-list uk-text-small tm-product-card-properties">
+			  {% for property,value in product.properties %}
+				<li><span class="uk-text-muted">{{ property }}</span><span>{{ values }}</span></li>
+			  {% endfor %}
+			</ul>
+		</div>
+		<div class="tm-product-card-shop">
+			<div class="tm-product-card-prices">
+			  {% if product.isNotAvailable %}
+				  <div class="uk-text-muted ">Product not available</div>
+			  {% else %}
+				{% if product.oldPrice %}
+				  <del class="uk-text-meta">{{ product.oldPrice }}</del>
+				{% endif %}
+				  <div class="tm-product-card-price">{{ product.price }}</div>
+			  {% endif %}
+			</div>
+			<div class="tm-product-card-add">
+				<div class="uk-text-meta tm-product-card-actions"><a class="tm-product-card-action js-add-to js-add-to-favorites {% if (product.isAddedToFavorites) %}tm-action-button-active js-added-to{% endif %}" title="Add to favorites"><span uk-icon="icon: heart; ratio: .75;"></span><span class="tm-product-card-action-text">Add to favorites</span></a><a class="tm-product-card-action js-add-to js-add-to-compare {% if product.isAddedToCompare %}tm-action-button-active js-added-to{% endif %}" title="Add to compare"><span uk-icon="icon: copy; ratio: .75;"></span><span class="tm-product-card-action-text">Add to compare</span></a></div>{% if not product.isNotAvailable %}<button class="uk-button uk-button-primary tm-product-card-add-button tm-shine js-add-to-cart"><span class="tm-product-card-add-button-icon" uk-icon="cart"></span><span class="tm-product-card-add-button-text">add to cart</span></button>{% endif %}
+			</div>
+		</div>
+	</div>
+</article>		  
+		  
+{% endmacro %}

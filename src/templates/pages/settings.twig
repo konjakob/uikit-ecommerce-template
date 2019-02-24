@@ -1,0 +1,56 @@
+{% extends '../layouts/_account.twig' %}
+
+{% block vars %}
+  
+    {% set page = {
+      title: 'Settings'
+    } %}
+
+    {% set profileActivePage = 4 %}
+{% endblock %}
+
+{% block account %}
+				
+	<div class="uk-card-body">
+		<form class="uk-form-stacked">
+			<div class="uk-grid-medium uk-child-width-1-1" uk-grid>
+				<fieldset class="uk-fieldset">
+					<legend class="uk-h4">Email</legend>
+					<div class="uk-grid-small uk-child-width-1-1" uk-grid>
+						<div><label>
+								<div class="uk-form-label">Current Email</div><input class="uk-input uk-form-width-large" type="email" value="example@example.com" disabled>
+							</label></div>
+						<div><label>
+								<div class="uk-form-label">New Email</div><input class="uk-input uk-form-width-large" type="email">
+							</label></div>
+						<div><button class="uk-button uk-button-primary">update email</button></div>
+					</div>
+				</fieldset>
+				<fieldset class="uk-fieldset">
+					<legend class="uk-h4">Password</legend>
+					<div class="uk-grid-small uk-child-width-1-1" uk-grid>
+						<div><label>
+								<div class="uk-form-label">Current Password</div><input class="uk-input uk-form-width-large" type="password">
+							</label></div>
+						<div><label>
+								<div class="uk-form-label">New Password</div><input class="uk-input uk-form-width-large" type="password">
+							</label></div>
+						<div><label>
+								<div class="uk-form-label">Confirm Password</div><input class="uk-input uk-form-width-large" type="password">
+							</label></div>
+						<div><button class="uk-button uk-button-primary">update password</button></div>
+					</div>
+				</fieldset>
+				<fieldset class="uk-fieldset">
+					<legend class="uk-h4">Email Notifications</legend>
+					<ul class="uk-list uk-margin-remove">
+						<li><input class="tm-checkbox" id="notification-1" type="checkbox" name="notification" value="1" checked><label for="notification-1"><span>Weekly Newsletter</span></label></li>
+						<li><input class="tm-checkbox" id="notification-2" type="checkbox" name="notification" value="1" checked><label for="notification-2"><span>New Product Announcements</span></label></li>
+						<li><input class="tm-checkbox" id="notification-3" type="checkbox" name="notification" value="1" checked><label for="notification-3"><span>Product Specials</span></label></li>
+					</ul>
+				</fieldset>
+			</div>
+		</form>
+	</div>
+								
+{% endblock %}

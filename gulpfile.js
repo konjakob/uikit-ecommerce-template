@@ -9,17 +9,20 @@ var gulp         = require('gulp'),
     autoprefixer = require('autoprefixer'),
     postcss      = require('gulp-postcss'),
     csso         = require('gulp-csso'),
-    pug          = require('gulp-pug'),
     jsmin        = require('gulp-jsmin'),
     ghPages      = require('gulp-gh-pages'),
-    include      = require('gulp-include');
+	packageJson  = require('./src/templates/data/data.json'),
+    include      = require('gulp-include'),
+	twig 		= require('gulp-twig'),
+	data 		= require('gulp-data');;
 
 // HTML
 
 gulp.task('html', function() {
-  return gulp.src(['src/templates/pages/**/*.pug'])
-    .pipe(pug({
-      basedir: 'src/templates'
+  return gulp.src(['src/templates/pages/**/*.twig'])
+    .pipe(twig({
+      basedir: 'src/templates',
+	  data: packageJson
     }))
     .pipe(gulp.dest('dest'))
     .pipe(sync.stream());
@@ -117,7 +120,7 @@ gulp.task('clear', function() {
 // Watch
 
 gulp.task('watch:html', function() {
-  return gulp.watch('src/templates/**/*.pug', gulp.series('html'));
+  return gulp.watch('src/templates/**/*.twig', gulp.series('html'));
 });
 
 gulp.task('watch:styles', function() {
@@ -151,6 +154,7 @@ gulp.task('build', gulp.parallel(
   'html',
   'styles',
   'scripts',
+  'images',
   'copy'
 ));
 

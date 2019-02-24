@@ -1,0 +1,55 @@
+{% extends '../layouts/_pages.twig' %}
+
+{% block vars %}
+  {% set page = {
+      title: 'Catalog',
+      breadcrumbs: {},
+      quantity: 641
+    }
+  %}
+{% endblock %}
+
+{% block pages %}
+
+<div class="uk-grid-medium" uk-grid>
+	<aside class="uk-width-1-4 uk-visible@m tm-aside-column">
+		<nav class="uk-card uk-card-default uk-card-body uk-card-small" uk-sticky="bottom: true; offset: 90">
+			<ul class="uk-nav uk-nav-default" uk-scrollspy-nav="closest: li; scroll: true; offset: 90">
+			  {% for category in catalog %}
+				<li><a href="#{{ category.id }}">{{ category.name }}</a></li>
+			  {% endfor %}
+			</ul>
+		</nav>
+	</aside>
+	<div class="uk-width-1-1 uk-width-expand@m">
+		<div class="uk-grid-medium uk-child-width-1-1" uk-grid>
+		  {% for category in catalog %}
+			<section id="{{ category.id }}">
+				<div class="uk-card uk-card-default uk-card-small tm-ignore-container uk-margin-bottom">
+					{# Header #}
+					<header class="uk-card-header">
+						<div class="uk-grid-small uk-flex-middle" uk-grid>{% if category.image %}<a href="{{ category.href }}"><img src="{{category.image}}" alt="{{category.name}}" width="50" height="50"></a>{% endif %}
+							<div class="uk-width-expand">
+								<h2 class="uk-h4 uk-margin-remove"><a class="uk-link-heading" href="{{ category.href }}">{{category.name}}</a></h2>
+								<div class="uk-text-meta">{{category.quantity}} items</div>
+							</div>
+						</div>
+					</header>
+					{# Body #}
+				  {% if category.items is iterable %}
+					<div class="uk-card-body">
+						<ul class="uk-list">
+						  {% for subCategory in category.items %}
+							<li><a href="subcategory.html">{{ subCategory }}</a></li>
+						  {% endfor %}
+						</ul>
+					</div>
+				  {% endif %}
+				</div>
+			</section>
+		  {% endfor %}
+		</div>
+	</div>
+</div>
+							
+{% endblock %}					  

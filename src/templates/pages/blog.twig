@@ -1,0 +1,25 @@
+{% extends '../layouts/_informational.twig' %}
+
+{% import '../mixins/_article.twig' as ma %}
+
+{% block vars %}
+
+    {% set page = {
+      title: 'Blog',
+      breadcrumbs: {}
+    } %}
+
+    {% set informationalActivePage = 3 %}
+{% endblock %}
+
+{% block informational %}
+
+<div class="uk-grid-medium uk-child-width-1-1" uk-grid>
+  {% for article in articles %}
+	<div>
+		{{ ma.article(article) }}
+	</div>
+  {% endfor %}
+</div>		
+		
+{% endblock %}

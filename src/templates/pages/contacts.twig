@@ -1,0 +1,67 @@
+{% extends '../layouts/_informational.twig' %}
+
+{% block vars %}
+  {% set page = {
+      title: 'Contacts',
+      breadcrumbs: {}
+    }  %}
+
+    {% set informationalActivePage = 2 %}
+{% endblock %}
+
+{% block informational %}
+
+<article class="uk-card uk-card-default uk-card-small uk-card-body uk-article tm-ignore-container">
+	<div class="tm-wrapper">
+		<figure class="tm-ratio tm-ratio-16-9 js-map" data-latitude="59.9356728" data-longitude="30.3258604" data-zoom="14"></figure>
+	</div>
+	<div class="uk-child-width-1-1 uk-child-width-1-2@s uk-margin-top" uk-grid>
+		<section>
+			<h3>Store</h3>
+			<ul class="uk-list">
+				<li><a class="uk-link-heading" href="#"><span class="uk-margin-small-right" uk-icon="receiver"></span><span class="tm-pseudo">{{ shopInfo.phone }}</span></a></li>
+				<li><a class="uk-link-heading" href="#"><span class="uk-margin-small-right" uk-icon="mail"></span><span class="tm-pseudo">{{ shopInfo.email }}</span></a></li>
+				<li>
+					<div><span class="uk-margin-small-right" uk-icon="location"></span><span>{{ shopInfo.address }}</span></div>
+				</li>
+				<li>
+					<div><span class="uk-margin-small-right" uk-icon="clock"></span><span>{{ shopInfo.openingHours }}</span></div>
+				</li>
+			</ul>
+		</section>
+		<section>
+			<h3>Feedback</h3>
+			<dl class="uk-description-list"><dt>Cooperation</dt>
+				<dd><a class="uk-link-muted" href="#">cooperation@example.com</a></dd><dt>Partners</dt>
+				<dd><a class="uk-link-muted" href="#">partners@example.com</a></dd><dt>Press</dt>
+				<dd><a class="uk-link-muted" href="#">press@example.com</a></dd>
+			</dl>
+		</section>
+		<section class="uk-width-1-1">
+			<h2 class="uk-text-center">Contact Us</h2>
+			<form>
+				<div class="uk-grid-small uk-child-width-1-1" uk-grid>
+					<div><label>
+							<div class="uk-form-label uk-form-label-required">Name</div><input class="uk-input" type="text" required>
+						</label></div>
+					<div><label>
+							<div class="uk-form-label uk-form-label-required">Email</div><input class="uk-input" type="email" required>
+						</label></div>
+					<div><label>
+							<div class="uk-form-label">Topic</div><select class="uk-select">
+								<option>Customer service</option>
+								<option>Tech support</option>
+								<option>Other</option>
+							</select>
+						</label></div>
+					<div><label>
+							<div class="uk-form-label">Message</div><textarea class="uk-textarea" rows="5"></textarea>
+						</label></div>
+					<div class="uk-text-center"><button class="uk-button uk-button-primary">Send</button></div>
+				</div>
+			</form>
+		</section>
+	</div>
+</article>
+			  
+{% endblock %}			  

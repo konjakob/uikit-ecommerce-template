@@ -1,0 +1,101 @@
+			<div class="uk-navbar-container tm-navbar-container" uk-sticky="cls-active: tm-navbar-container-fixed">
+                <div class="uk-container" uk-navbar>
+					<div class="uk-navbar-left">
+						{# Hamburger #}
+						<button class="uk-navbar-toggle uk-hidden@m" uk-toggle="target: #nav-offcanvas" uk-navbar-toggle-icon></button>
+						{# Logo #}
+						<a class="uk-navbar-item uk-logo" href="index.html"><img src="images/logo.svg" width="90" height="32" alt="Logo"></a>
+                        <nav class="uk-visible@m">
+                            <ul class="uk-navbar-nav">
+							
+							  {% for item in navbarMenu %}
+								
+                                <li><a href="{{ item.href }}">{{ item.name }}{% if item.items %}<span class="uk-margin-xsmall-left" uk-icon="icon: chevron-down; ratio: .75;"></span>{% endif %}</a>
+								  {% if item.items %}
+                                    <div class="uk-navbar-dropdown uk-margin-remove uk-padding-remove-vertical" uk-drop="pos: bottom-justify;delay-show: 125;delay-hide: 50;duration: 75;boundary: .tm-navbar-container;boundary-align: true;pos: bottom-justify;flip: x">
+									  {% if item.name == "Catalog" %}
+                                        <div class="uk-container">
+                                            <ul class="uk-navbar-dropdown-grid uk-child-width-1-5" uk-grid>
+											  {% for category in item.items %}
+                                                <li>
+                                                    <div class="uk-margin-top uk-margin-bottom"><a class="uk-link-reset" href="{{ category.href }}">{% if category.image %}<img class="uk-display-block uk-margin-auto uk-margin-bottom" src="{{ category.image }}" alt="{{ category.name }}" width="80" height="80">{% endif %}
+                                                            <div class="uk-text-bolder">{{ category.name }}</div>
+                                                        </a>
+														{% if category.items %}
+                                                        <ul class="uk-nav uk-nav-default">
+														  {% for subcategory in category.items %}
+                                                            <li><a href="subcategory.html">{{ subcategory }}</a></li>
+														  {% endfor %}
+                                                        </ul>
+														{% endif %}
+                                                    </div>
+                                                </li>
+											  {% endfor %}
+                                            </ul>
+                                        </div>
+									  {% endif %}
+									  {% if item.name == "Brands" %}
+										<div class="uk-container uk-container-small uk-margin-top uk-margin-bottom">
+                                            <ul class="uk-grid-small uk-child-width-1-6" uk-grid>
+											  {% for brand in item.items %}
+                                                <li>
+                                                    <div class="tm-ratio tm-ratio-4-3"><a class="uk-link-muted uk-text-center uk-display-block uk-padding-small uk-box-shadow-hover-large tm-media-box" href="#" title="{{ brand.name }}">
+                                                            <figure class="tm-media-box-wrap"><img src="{{ brand.image }}" alt="{{ brand.name }}"></figure>
+                                                        </a></div>
+                                                </li>
+											  {% endfor %}
+                                            </ul>
+                                            <div class="uk-text-center uk-margin"><a class="uk-link-muted uk-text-uppercase tm-link-to-all" href="brands.html"><span>See all brands</span><span uk-icon="icon: chevron-right; ratio: .75;"></span></a></div>
+                                        </div>									  
+									  {% endif %}
+									  {% if item.name == "Pages" %}
+										<div class="uk-container uk-container-small uk-margin-top uk-margin-bottom">
+                                            <ul class="uk-nav uk-nav-default uk-column-1-3">
+											  {% for page in item.items %}
+                                                <li><a href="{{ page.href }}">{{ page.name }}</a></li>
+											  {% endfor %}
+                                            </ul>
+                                        </div>									  
+									  {% endif %}
+                                    </div>
+								  {% endif %}
+                                </li>
+								
+							  {% endfor %}
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="uk-navbar-right">
+						{# Search #}
+						<a class="uk-navbar-toggle tm-navbar-button" href="#" uk-search-icon></a>
+                        <div class="uk-navbar-dropdown uk-padding-small uk-margin-remove" uk-drop="mode: click;cls-drop: uk-navbar-dropdown;boundary: .tm-navbar-container;boundary-align: true;pos: bottom-justify;flip: x">
+                            <div class="uk-container">
+                                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                    <div class="uk-width-expand">
+                                        <form class="uk-search uk-search-navbar uk-width-1-1"><input class="uk-search-input" type="search" placeholder="Search…" autofocus></form>
+                                    </div>
+                                    <div class="uk-width-auto"><a class="uk-navbar-dropdown-close" href="#" uk-close></a></div>
+                                </div>
+                            </div>
+                        </div>
+						{# Compare #}
+						<a class="uk-navbar-item uk-link-muted uk-visible@m tm-navbar-button" href="compare.html"><span uk-icon="copy"></span><span class="uk-badge">3</span></a>
+						{# User #}
+						<a class="uk-navbar-item uk-link-muted tm-navbar-button" href="account.html" uk-icon="user"></a>
+                        <div class="uk-padding-small uk-margin-remove" uk-dropdown="pos: bottom-right; offset: -10; delay-hide: 200;" style="min-width: 150px;">
+                            <ul class="uk-nav uk-dropdown-nav">
+                                <li><a href="account.html">Orders
+                                        <span>(2)</span></a></li>
+                                <li><a href="favorites.html">Favorites
+                                        <span>(3)</span></a></li>
+                                <li><a href="personal.html">Personal</a></li>
+                                <li><a href="settings.html">Settings</a></li>
+                                <li class="uk-nav-divider"></li>
+                                <li><a href="#">Log out</a></li>
+                            </ul>
+                        </div>
+						{# Cart #}
+						<a class="uk-navbar-item uk-link-muted tm-navbar-button" href="cart.html" uk-toggle="target: #cart-offcanvas" onclick="return false"><span uk-icon="cart"></span><span class="uk-badge">2</span></a>
+                    </div>
+                </div>
+            </div>

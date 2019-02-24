@@ -1,0 +1,36 @@
+{% extends '../layouts/_informational.twig' %}
+
+{% block vars %}
+  
+    {% set page = {
+      title: 'News',
+      breadcrumbs: {}
+    }
+	%}
+	
+    {% set informationalActivePage = 4 %}
+{% endblock %}
+
+{% block informational %}
+
+	<section class="uk-card uk-card-default uk-card-small uk-card-body tm-ignore-container">
+		<ul class="uk-list uk-list-large uk-list-divider">
+		  {% for article in news %}
+			<li>
+				<article class="uk-article">
+					<div class="uk-article-body">
+						<div class="uk-article-meta uk-margin-xsmall-bottom"><time>{{ article.date }}</time></div>
+						<div>
+							<h3><a class="uk-link-heading" href="{{ article.href }}">{{ article.title }}</a></h3>
+						</div>
+						<div class="uk-margin-small-top">
+							{{ article.description }}
+						</div>
+					</div>
+				</article>
+			</li>
+		  {% endfor %}
+		</ul>
+	</section>
+									
+{% endblock %}

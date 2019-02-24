@@ -1,0 +1,57 @@
+{% extends '../layouts/_pages.twig' %}
+
+{% import '../mixins/_product-small.twig' as mps %}
+
+{% block vars %}
+  {% set page = {
+      title: 'Compare',
+      breadcrumbs: {}
+    }
+ %}
+{% endblock %}	
+
+{% block pages %}
+
+<div class="uk-card uk-card-default uk-overflow-auto tm-ignore-container">
+	<table class="uk-table uk-table-divider tm-compare-table">
+		<thead>
+			<tr class="uk-child-width-1-4">
+				<td class="uk-table-middle uk-text-center tm-compare-column"><input class="tm-checkbox" id="show-difference" type="checkbox"><label for="show-difference">Show differences only</label></td>
+			  {% for product in products %}
+               {% if product.isAddedToCompare %}	
+				<td class="tm-compare-table-column">
+					<div class="uk-height-1-1">
+						<div class="uk-grid-small uk-child-width-1-1 uk-height-1-1" uk-grid>
+							<div class="uk-text-center"><a class="uk-text-small uk-text-danger" href="#"><span uk-icon="icon: close; ratio: .75;"></span><span class="uk-margin-xsmall-left tm-pseudo">Delete</span></a></div>
+							<div>
+								{{ mps.productsmall(product) }}
+							</div>
+						</div>
+					</div>
+				</td>
+			   {% endif %}
+			  {% endfor %}
+			</tr>
+		</thead>
+	  {% for group in compare %}
+		<tbody>
+			<tr>
+				<th colspan="4">
+					<h3 class="uk-margin-remove">{{ group.name }}</h3>
+				</th>
+			</tr>
+		  {% for property, values in group.properties %}
+			<tr>
+				<th>{{ property }}</th>
+			  {% for value in values %}
+				<td>{{ value }}</td>
+			  {% endfor %}
+			</tr>
+		  {% endfor %}
+		</tbody>
+	  {% endfor %}
+	</table>
+</div>
+			
+				
+{% endblock %}

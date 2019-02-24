@@ -1,0 +1,43 @@
+{% extends '_index.twig' %}
+
+{% block vars %}
+{% endblock %}
+
+{% block index %}
+
+<header>
+	<div class="uk-navbar-container tm-navbar-container">
+		<div class="uk-container" uk-navbar>
+			<div class="uk-navbar-left"><a class="uk-navbar-item uk-logo" href="index.html"><img src="images/logo.svg" width="90" height="32" alt="Logo"></a></div>
+			<div class="uk-navbar-right"><a class="uk-navbar-item uk-link-muted" href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: receiver; ratio: .75;"></span><span class="tm-pseudo">{{shopInfo.phone}}</span></a></div>
+		</div>
+	</div>
+</header>
+<main>	
+	<section class="uk-section uk-section-small">
+		<div class="uk-container">
+			<div class="uk-grid-medium uk-child-width-1-1" uk-grid>
+				<section class="uk-text-center"><a class="uk-link-muted uk-text-small" href="cart.html"><span class="uk-margin-xsmall-right" uk-icon="icon: arrow-left; ratio: .75;"></span>Return to cart</a>
+					<h1 class="uk-margin-small-top uk-margin-remove-bottom">Checkout</h1>
+				</section>
+				<section>
+					{% block checkout %}{% endblock %}
+				</section>
+			</div>
+		</div>
+	</section>
+</main>			  
+<footer>
+	<div class="uk-section uk-section-secondary uk-section-small uk-light">
+		<div class="uk-container">
+			<div class="uk-flex-middle" uk-grid>
+				<div class="uk-width-expand">
+					<div>© Company Name. All rights reserved</div>
+				</div>
+				<div><a class="uk-link-muted" href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: receiver; ratio: .75;"></span><span class="tm-pseudo">{{shopInfo.phone}}</span></a></div>
+			</div>
+		</div>
+	</div>
+</footer>	
+
+{% endblock %}		  

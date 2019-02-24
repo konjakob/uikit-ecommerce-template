@@ -1,0 +1,53 @@
+{% extends '../layouts/_article.twig' %}
+
+{% block vars %}
+  {% set article = articles[0] %}
+  {% set page = {
+      title: article.title,
+	  breadcrumbs: {
+        'Blog': 'blog.html'
+      }
+    }
+ %}
+{% endblock %}
+
+{% block article %}
+			  
+<div class="uk-grid-medium uk-child-width-1-1" uk-grid>
+	<section>
+		<article class="uk-card uk-card-default uk-card-body uk-article tm-ignore-container">
+			<header class="uk-text-center">
+				<h1 class="uk-article-title">{{ article.title }}</h1>
+				<div class="uk-article-meta"><time>{{ article.date }}</time></div>
+			</header>
+			<section class="uk-article-body">
+				{% include '../partials/_article.twig' %}
+			</section>
+		</article>
+	</section>
+	{# Related articles #}
+	<section>
+		<h2 class="uk-text-center">Related Articles</h2>
+		<div class="uk-grid-medium uk-grid-match uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-4@m" uk-grid>
+		  {% for article in articles %}
+			<div><a href="{{ article.href }}">
+					<article class="uk-card uk-card-default uk-card-small uk-overflow-hidden uk-link-heading uk-display-block uk-box-shadow-hover-large uk-height-1-1 tm-ignore-container">
+					  {% if article.preview %}
+						<div class="uk-card-media-top">
+							<figure class="uk-margin-remove tm-ratio tm-ratio-16-9">
+								<div class="uk-cover-container"><img src="{{ article.preview }}" alt="{{ article.title }}" uk-cover></div>
+							</figure>
+						</div>
+					  {% endif %}
+						<div class="uk-card-body">
+							<div class="uk-article-meta uk-margin-xsmall-bottom"><time>{{ article.date }}</time></div>
+							<h3 class="uk-h4 uk-margin-remove">{{ article.title }}</h3>
+						</div>
+					</article>
+				</a></div>
+		  {% endfor %}
+		</div>
+	</section>
+</div>				  
+
+{% endblock %}

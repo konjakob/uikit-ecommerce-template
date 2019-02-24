@@ -1,0 +1,5 @@
+{% macro quantity(productId) %}
+
+<a onclick="increment(-1, 'product-{{ productId }}')" uk-icon="icon: minus; ratio: .75"></a><input class="uk-input tm-quantity-input" id="product-{{ productId }}" type="text" maxlength="3" value="1" /><a onclick="increment(+1, 'product-{{ productId }}')" uk-icon="icon: plus; ratio: .75"></a>
+
+{% endmacro %}

@@ -1,0 +1,9 @@
+{% macro icon(name, ratio) %}
+
+	{% if not ratio %}
+		span(uk-icon= name)&attributes(attributes)
+	{% else %}
+		span(uk-icon=`icon: ${name}; ratio: ${ratio};`)&attributes(attributes)
+	{% endif %}
+	
+{% endmacro %}
