@@ -14,7 +14,7 @@
 				 {% for product in products %}
 				  {% if product.isAddedToCart %}
 					<li class="uk-visible-toggle">
-						<arttcle>
+						<article>
 							<div class="uk-grid-small" uk-grid>
 								<div class="uk-width-1-4">
 									<div class="tm-ratio tm-ratio-4-3"><a class="tm-media-box" href="{{ product.href }}">
@@ -30,7 +30,7 @@
 								</div>
 								<div><a class="uk-icon-link uk-text-danger uk-invisible-hover" href="#" uk-icon="icon: close; ratio: .75" uk-tooltip="Remove"></a></div>
 							</div>
-						</arttcle>
+						</article>
 					</li>
 				  {% endif %}
 				 {% endfor %}
