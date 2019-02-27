@@ -19,7 +19,7 @@
 					  {% endfor %}
 					</div>
 				  {% endif %}
-				<figure class="tm-media-box-wrap">{% if product.image %}<img src="{{ product.image.medium }}" alt="{{product.name}}" />{% else %}icon("image", "3")(class="uk-text-muted"){% endif %}</figure>
+				<figure class="tm-media-box-wrap">{% if product.image %}<img src="{{ product.image.medium }}" alt="{{product.name}}" />{% else %}<span class="uk-text-muted" uk-icon="icon: image; ratio: 3;"></span>{% endif %}</figure>
 			</a></div>
 	</div>
 	<div class="tm-product-card-body">

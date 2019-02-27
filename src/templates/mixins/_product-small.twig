@@ -3,7 +3,7 @@
 <div class="uk-grid-small uk-height-1-1" uk-grid="uk-grid">
 	<div class="uk-width-1-3">
 		<div class="tm-ratio tm-ratio-4-3"><a class="tm-media-box" href="product.html">
-				<figure class="tm-media-box-wrap">{% if product.image %}<img src="{{ product.image.small }}" alt="{{ product.name }}" />{% else %}icon("image", "3")(class="uk-text-muted"){% endif %}</figure>
+				<figure class="tm-media-box-wrap">{% if product.image %}<img src="{{ product.image.small }}" alt="{{ product.name }}" />{% else %}<span class="uk-text-muted" uk-icon="icon: image; ratio: 3;"></span>{% endif %}</figure>
 			</a></div>
 	</div>
 	<div class="uk-width-expand">
